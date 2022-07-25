@@ -32,7 +32,6 @@ class PlaylistController(@Autowired private val service: PlaylistService) {
     fun getPlaylistByEvents(): Flux<Tuple2<Long, Playlist>> {
         val interval = Flux.interval(Duration.ofSeconds(10))
         val events = service.findAll()
-        println("Passou aqui em events")
         return Flux.zip(interval, events)
     }
 }
